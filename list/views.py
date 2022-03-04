@@ -36,8 +36,8 @@ class TodoListDetail(APIView):
         serializer.save()
 
     
-    def delete(self,pk):
-        todo = get_object_or_404(TodoList.objects.all(), pk=pk)
+    def delete(self,request,pk):
+        todo = get_object_or_404(TodoList.objects.all(),pk=pk)
         todo.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -48,10 +48,13 @@ class CustomerTodo(APIView):
         customer_todos = TodoList.objects.filter(customer = pk)
         serializer = TodoSerializer(customer_todos,many = True)
         return Response(serializer.data)
-    
-    
 
-
+    
+    def delete(self,request,pk):
+        customer_todos = TodoList.objects.filter(customer = pk)
+        customer_todos.delete()
+        return Response(status = status.HTTP_204_NO_CONTENT)
+        
 
 class CustomerViewSet(ModelViewSet):
     queryset = Customer.objects.all()
