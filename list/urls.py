@@ -7,11 +7,10 @@ from . import views
 
 router = SimpleRouter()
 
-router.register('customer',views.CustomerViewSet)
-
+router.register('todo',views.TodoListViewSet)
+router.register('customers',views.CustomerViewSet)
 urlpatterns = [
-    path('todo/',views.TodoListView.as_view()),
-    path('todo/<int:pk>',views.TodoListDetail.as_view()),
+    
     path('customerTodo/<int:pk>',views.CustomerTodo.as_view())
 ]
 

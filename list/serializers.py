@@ -9,8 +9,17 @@ class TodoSerializer(serializers.ModelSerializer):
         fields = ['id','item','status','customer']
 
 
-class CustomerSerializer(serializers.ModelSerializer):
-    class Meta:
+# class CustomerSerializer(serializers.ModelSerializer):
+#     class Meta:
         
+#         model = Customer
+#         fields = ['id','first_name','last_name','email','phone','birthdate']
+
+
+class CustomerSerializer(serializers.ModelSerializer):
+
+    user_id = serializers.IntegerField()
+
+    class Meta:
         model = Customer
-        fields = ['id','first_name','last_name','email','phone','birthdate']
+        fields = ['id','user_id','phone','birthdate']

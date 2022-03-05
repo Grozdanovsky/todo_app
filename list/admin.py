@@ -12,8 +12,9 @@ class TodoAdmin(admin.ModelAdmin):
 @admin.register(models.Customer)
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ['first_name','last_name','email','phone','birthdate']
-    list_editable = ['email','phone']
+    list_editable = ['phone']
+    list_select_related = ['user']
     search_fields = ['first_name__istartswith','last_name__istartswith']
     lists_per_page = 10
-    ordering = ['first_name','last_name']
-    
+    ordering = ['user__first_name','user__last_name']
+    autocomplete_fields = ['user']
