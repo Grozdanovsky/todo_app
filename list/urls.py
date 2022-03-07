@@ -8,13 +8,13 @@ from . import views
 router = SimpleRouter()
 
 router.register('todo',views.TodoListViewSet)
-router.register('customerTodo',views.CustomerTodo)
-# urlpatterns = [
-    
-#     path('customerTodo/<int:pk>',views.CustomerTodo.as_view())
-# ]
 
-urlpatterns = router.urls
+urlpatterns = [
+    
+    path('customerTodo/<int:pk>',views.CustomerTodo.as_view())
+]
+
+urlpatterns += router.urls
     
     
 
