@@ -40,10 +40,7 @@ class CustomerViewSet(ModelViewSet):
     serializer_class = CustomerSerializer
     permission_classes = [IsAdminUser]
 
-    def get_permissions(self):
-        if self.request.method == "GET":
-            return[AllowAny()]
-        return [IsAuthenticated()]
+    
 
     @action(detail=False, methods = ['GET','PUT'], permission_classes = [IsAuthenticated]) # this action is avilable on list view
     def me(self,request):
